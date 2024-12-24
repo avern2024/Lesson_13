@@ -53,6 +53,9 @@ async def send_calories(message: types.Message, state: FSMContext):
     await message.answer(f'Ваша норма калорий: {calories:.2f}')
     await state.finish()
 
+@dp.message_handler()
+async def all_messages(message):
+    await message.answer('Введите команду /start, чтобы начать общение.')
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
